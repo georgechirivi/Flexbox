@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Practicos Flexbox</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        main {
+            flex-grow: 1;
+        }
+
+        .titulares {
+            padding: 1rem;
+            background-color: #222;
+            color: #EEE;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .menu ul {
+            list-style-type: none;
+        }
+
+        .hero-image {
+            min-height: 100vh;
+            background-image: url("data:image/jpeg;base64,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");
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        .hero-image div {
+            min-height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, .75);
+            text-align: center;
+        }
+
+        .hero-image h1 {
+            font-size: 5vw;
+        }
+
+        .flex-responsive {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .flex-responsive-item {
+            border: thin solid #f60;
+            flex: 1 1 200px;
+        }
+
+        @media screen and(min-width:1024px) {
+            .header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .menu ul {
+                display: flex;
+            }
+
+            .menu li {
+                padding: 1rem;
+            }
+
+            .flex-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .flex-item {
+                flex: 0 0 50;
+            }
+
+            .flex-order-1 {
+                order: 1;
+            }
+
+            .flex-row-reverse {
+                flex-direction: row-reverse;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="titulares header">
+        <div class="logo">Logo</div>
+        <nav class="menu">
+            <ul>
+                <li><a href="">Seccion 1</a></li>
+                <li><a href="">Seccion 2</a></li>
+                <li><a href="">Seccion 3</a></li>
+                <li><a href="">Seccion 4</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article class="hero-image">
+            <div>
+                <h1>Flexbox is fuckin color!!!!</h1>
+            </div>
+        </article>
+        <section class="flex.container flex-row-reverse">
+        <section class="flex-item ">
+            <article class="flex-item">
+                <h2>Titulo</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum non eveniet veniam perspiciatis
+                    doloremque cumque, blanditiis consequuntur odio, laborum quasi ipsum accusantium magni soluta
+                    explicabo voluptate libero aliquam molestias.
+                </p>
+            </article>
+            <article class="flex-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="">
+            </article>
+
+            <article class="flex-item">
+                <img src="<article class=" flex-item">
+                <h2>Titulo</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A rerum non eveniet veniam perspiciatis
+                    doloremque cumque, blanditiis consequuntur odio, laborum quasi ipsum accusantium magni soluta
+                    explicabo voluptate libero aliquam molestias.
+                </p>
+            </article>
+            <article class="flex-item">
+                <img
+                    src="https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            </article>">
+            </article>
+        </section>
+        <h2>Responsive sin Media Queries con Flexbox</h2>
+        <section class="flex-responsive">
+            <article class="flex-responsive-item">Item Responsivo 1</article>
+            <article class="flex-responsive-item">Item Responsivo 2</article>
+            <article class="flex-responsive-item">Item Responsivo 3</article>
+            <article class="flex-responsive-item">Item Responsivo 4</article>
+            <article class="flex-responsive-item">Item Responsivo 5</article>
+            <article class="flex-responsive-item">Item Responsivo 6</article>
+            <article class="flex-responsive-item">Item Responsivo 7</article>
+            <article class="flex-responsive-item">Item Responsivo 8</article>
+            <article class="flex-responsive-item">Item Responsivo 9</article>
+            <article class="flex-responsive-item">Item Responsivo 10</article>
+            <article class="flex-responsive-item">Item Responsivo 11</article>
+            <article class="flex-responsive-item">Item Responsivo 12</article>
+            <article class="flex-responsive-item">Item Responsivo 13</article>
+            <article class="flex-responsive-item">Item Responsivo 14</article>
+            <article class="flex-responsive-item">Item Responsivo 15</article>
+            <article class="flex-responsive-item">Item Responsivo 16</article>
+            <article class="flex-responsive-item">Item Responsivo 17</article>
+            <article class="flex-responsive-item">Item Responsivo 18</article>
+            <article class="flex-responsive-item">Item Responsivo 19</article>
+        </section>
+    </main>
+    <footer class="titulares">
+        <h2>Sticky Footer</h2>
+    </footer>
+</body>
+
+</html>
